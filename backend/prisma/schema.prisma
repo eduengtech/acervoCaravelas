@@ -1,0 +1,88 @@
+
+generator client {
+  provider        = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+
+}
+
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+model User {
+  id                String      @id @default(uuid())
+  nome              String
+  email             String      @unique
+  senhaHash         String
+  role              Role
+  
+  
+  itensCriados ItensAcervo[]  @relation("UsuarioCriador")
+
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  tokenHash String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+
+model ItensAcervo {
+  id           String          @id @default(uuid())
+  titulo       String
+  descricao    String
+  dataCriacao  DateTime ?
+  tipoItemId   String
+  categoriaId  String
+  autorId      String ?
+  criadoPorId  String
+  criadoEm     DateTime        @default(now())
+  publicado    Boolean         @default(false)
+
+  tipoItem     TipoDeItem      @relation(fields: [tipoItemId], references: [id])
+  categoria    Categoria       @relation(fields: [categoriaId], references: [id])
+  autor        Autor ?         @relation(fields: [autorId], references: [id])
+  criadoPor    User        @relation("UsuarioCriador", fields: [criadoPorId], references: [id])
+  arquivos     ArquivoDigital[]
+
+  @@index([titulo])
+  @@index([dataCriacao])
+}
+
+model TipoDeItem {
+  id        String         @id @default(uuid())
+  nome      String         @unique
+  itens     ItensAcervo[]
+}
+
+model Categoria {
+  id        String         @id @default(uuid())
+  nome      String         @unique
+  itens     ItensAcervo[]
+}
+
+model Autor {
+  id              String         @id @default(uuid())
+  nome            String
+  dataNascimento  DateTime
+  itens           ItensAcervo[]
+}
+
+model ArquivoDigital {
+  id        String      @id @default(uuid())
+  itemId    String
+  url       String
+  tipo      String
+
+  item      ItensAcervo  @relation(fields: [itemId], references: [id])
+}
