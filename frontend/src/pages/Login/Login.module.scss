@@ -1,0 +1,150 @@
+@use '../../assets/styles/variables' as vars;
+@use '../../assets/styles/mixins' as mix;
+
+.mainContainer{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem
+}
+.contentWrapper{
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  gap: 20px;  
+}
+.brandingSection{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  .logo {
+    width: 100%;
+    max-width: 1500px;
+    height: auto; 
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  }
+}
+
+.formSection {
+  flex: 1;                 
+  display: flex;
+  justify-content: center;
+}
+.loginCard {
+  @include mix.glass-effect; 
+  padding: 1.9rem;
+  width: 100%;
+  max-width: 500px;
+  background-color: vars.$bg-card-glass;
+  border-radius: vars.$border-radius;
+  text-align: center;
+
+  .cardHeader{
+    margin-bottom: 2.5rem;
+
+    .welcomeText{
+      font-family: vars.$font-body;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: vars.$color-primary;
+      margin-bottom: 0.5rem;
+    }
+    .projectTitle {
+      font-family: vars.$font-body;
+      font-size: 2.2rem;
+      color: vars.$color-primary;
+      line-height: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+
+      span{
+      color: vars.$color-gold-main; 
+      font-weight: 800;
+      }
+
+      p{
+        font-family: vars.$font-body;
+        font-size: 0.1rem;
+        color: vars.$color-text-dark;
+        font-weight: 800;
+      }
+    }
+  }
+}
+.inputGroup{
+  margin-bottom: 2rem;
+  text-align: left;
+  position: relative;
+
+  input{
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(15, 61, 62, 0.1);
+    border-radius: 8px;
+    font-family: vars.$font-body;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+
+    &:focus{
+        outline: none;
+        background: #f9f9f9;
+        border-color: vars.$color-gold-main;
+        box-shadow: 0 0 8px #c9971a33;
+    }
+
+    &::placeholder {
+      color: vars.$color-primary;
+    }
+  }
+  .linkRemember{
+    display: flex;
+    justify-content: end;
+    margin-top: 0.5rem;
+
+    a {
+      font-size: 0.8rem;
+      font-family: vars.$font-body;
+      text-decoration: none;
+      color: vars.$color-primary;
+
+      &:hover{
+        color: vars.$color-gold-main;
+      }
+    }
+  }
+}
+
+.loginButton{
+  width: 60%;
+  padding: 10px;
+  margin-top: 1rem;
+  margin-bottom: 4.5rem;
+  border: none;
+  border-radius: 8px;
+
+  background: linear-gradient(135deg, vars.$color-gold-main, vars.$color-gold-dark);
+
+  color: #ffffff;
+  font-family: vars.$font-body;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;  
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background: linear-gradient(135deg, vars.$color-gold-light, vars.$color-gold-main);
+    box-shadow: 0 5px 15px rgba(201, 151, 26, 0.4);
+    transform: translateY(-2px);
+  }
+
+}
+
+.loginFooter{
+  font-size: 0.99rem;
+  color: vars.$color-primary;
+  font-family: vars.$font-title;
+}

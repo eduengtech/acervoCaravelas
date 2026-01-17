@@ -16,22 +16,48 @@ O projeto é estruturado como um Monorepo, garantindo consistência entre a API 
 - **Framework:** [NestJS](https://nestjs.com/) (NodeJS)
 - **ORM:** Prisma 7+ (Utilizando @prisma/adapter-pg para performance nativa)
 - **Banco de Dados:** PostgreSQL
-- **Segurança:** Passport.js + JWT (JSON Web Token)
+- **Autenticaçao:** Passport.js + JWT (Access Token + Refresh Token via cookie HTTP-only)
+- **Autorização:** RBAC (Role-BAsed Access Control)
 - **Validação:** class-validator + DTOs
 - **Documentação:** Swagger (OpenAPI)
 - **Hospedagem:** Supabase (banco de dados)
 - **Linguagem:** TypeScript
 
-### **Frontend (Em desenvolvimento)**
+### **Frontend**
 - **Framework:** React (Vite) + TypeScript
-- **Estilização:** SASS (SCSS) com arquitetura modular
+- **Estilização:** SASS (SCSS Modular).
+- **Comunicação HTTP:** Axios com interceptors.
+- **Autenticação:** Sessão baseada em cookies HTTP-only com refresh automatico.
 
-## 🔐 Segurança e Governança
+## 🔐 Segurança e Controle de Acesso
 
-O acesso ao sistema é controlado por níveis de permissão (Roles):
+O sistema implementa autenticação moderna baseada em sessão segura.
 
-- **ADMIN:** Gestão total de usuários e configurações do sistema.
-- **EDITOR:** Responsável pela inserção e edição de itens do acervo cultural.
+- Login com cokkie HTTP-only.
+- Refresh automatico de sessão
+- Proteção de rotas via guards no backend
+- Controle de acesso por perfil (RBAC)
+
+| Role | |Permissões |
+| :--- |  :--- | ---: |
+| ADMIN |  | Gerenciamento completo do sistema|
+| EDITOR |  |Inserção e edição de itens do acervo |
+
+## ✨ Funcionalidades Implementadas
+
+- Autenticação segura com persistência de sessão
+
+- Refresh automático de token
+
+- Proteção de rotas sensíveis no backend
+
+- Controle de acesso por nível de usuário (RBAC)
+
+- Logout com invalidação de sessão
+
+- Dashboards diferenciados por perfil (ADMIN / EDITOR)(em desenvolvimento)
+
+- Arquitetura frontend preparada para rotas protegidas
 
 ## 🚀 Como Executar o Projeto
 

@@ -21,7 +21,7 @@ export class TokenService {
 
     await this.saveRefreshToken(user.id, refreshToken);
 
-    return { access_token: accessToken, refresh_token: refreshToken };
+    return { accessToken: accessToken, refreshToken: refreshToken };
   }
 
   /**

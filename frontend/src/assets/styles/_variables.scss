@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+// --- PALETA DE CORES --
+$color-primary: #0F3D3E;
+$color-gold-main: #DD9B01;
+$color-gold-light: #D4A017; 
+$color-gold-dark: #B8860B;  
+$color-text-body: #666666;
+
+// --- CORES DE FUNDO E TEXTO ---
+$bg-card-glass: #faf3e9; 
+$color-text-dark: #3E3E3E;
+$color-text-muted: #717171;
+$color-white: #FFFFFF;
+
+// --- TIPOGRAFIA ---
+$font-title: 'League Spartan', serif;
+$font-body: 'Inter', sans-serif;
+
+// --- EFEITOS (UI) ---
+$shadow-card: 0 10px 40px rgba(0, 0, 0, 0.1);
+$blur-effect: blur(10px);
+$border-radius: 20px;
+$transition: all 0.3s ease;
