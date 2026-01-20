@@ -1,20 +1,20 @@
-@use '../../assets/styles/variables' as vars;
-@use '../../assets/styles/mixins' as mix;
+@use "../../assets/styles/variables" as vars;
+@use "../../assets/styles/mixins" as mix;
 
-.mainContainer{
+.mainContainer {
   width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 2rem
+  padding: 2rem;
 }
-.contentWrapper{
+.contentWrapper {
   width: 100%;
   max-width: 1100px;
   display: flex;
-  gap: 20px;  
+  gap: 20px;
 }
-.brandingSection{
+.brandingSection {
   display: flex;
   flex: 1;
   justify-content: center;
@@ -22,18 +22,18 @@
   .logo {
     width: 100%;
     max-width: 1500px;
-    height: auto; 
+    height: auto;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
   }
 }
 
 .formSection {
-  flex: 1;                 
+  flex: 1;
   display: flex;
   justify-content: center;
 }
 .loginCard {
-  @include mix.glass-effect; 
+  @include mix.glass-effect;
   padding: 1.9rem;
   width: 100%;
   max-width: 500px;
@@ -41,10 +41,10 @@
   border-radius: vars.$border-radius;
   text-align: center;
 
-  .cardHeader{
+  .cardHeader {
     margin-bottom: 2.5rem;
 
-    .welcomeText{
+    .welcomeText {
       font-family: vars.$font-body;
       font-size: 1.5rem;
       text-transform: uppercase;
@@ -60,12 +60,12 @@
       font-weight: 700;
       margin-bottom: 1rem;
 
-      span{
-      color: vars.$color-gold-main; 
-      font-weight: 800;
+      span {
+        color: vars.$color-gold-main;
+        font-weight: 800;
       }
 
-      p{
+      p {
         font-family: vars.$font-body;
         font-size: 0.1rem;
         color: vars.$color-text-dark;
@@ -74,12 +74,12 @@
     }
   }
 }
-.inputGroup{
+.inputGroup {
   margin-bottom: 2rem;
   text-align: left;
   position: relative;
 
-  input{
+  input {
     width: 100%;
     padding: 12px 15px;
     background: rgba(255, 255, 255, 0.5);
@@ -89,18 +89,18 @@
     font-size: 0.9rem;
     transition: all 0.3s ease;
 
-    &:focus{
-        outline: none;
-        background: #f9f9f9;
-        border-color: vars.$color-gold-main;
-        box-shadow: 0 0 8px #c9971a33;
+    &:focus {
+      outline: none;
+      background: #f9f9f9;
+      border-color: vars.$color-gold-main;
+      box-shadow: 0 0 8px #c9971a33;
     }
 
     &::placeholder {
       color: vars.$color-primary;
     }
   }
-  .linkRemember{
+  .linkRemember {
     display: flex;
     justify-content: end;
     margin-top: 0.5rem;
@@ -111,14 +111,14 @@
       text-decoration: none;
       color: vars.$color-primary;
 
-      &:hover{
+      &:hover {
         color: vars.$color-gold-main;
       }
     }
   }
 }
 
-.loginButton{
+.loginButton {
   width: 60%;
   padding: 10px;
   margin-top: 1rem;
@@ -126,24 +126,33 @@
   border: none;
   border-radius: 8px;
 
-  background: linear-gradient(135deg, vars.$color-gold-main, vars.$color-gold-dark);
+  background: linear-gradient(
+    135deg,
+    vars.$color-gold-main,
+    vars.$color-gold-dark
+  );
 
   color: #ffffff;
   font-family: vars.$font-body;
   font-weight: 600;
   font-size: 1.1rem;
-  cursor: pointer;  
-  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 
   &:hover {
-    background: linear-gradient(135deg, vars.$color-gold-light, vars.$color-gold-main);
+    background: linear-gradient(
+      135deg,
+      vars.$color-gold-light,
+      vars.$color-gold-main
+    );
     box-shadow: 0 5px 15px rgba(201, 151, 26, 0.4);
     transform: translateY(-2px);
   }
-
 }
 
-.loginFooter{
+.loginFooter {
   font-size: 0.99rem;
   color: vars.$color-primary;
   font-family: vars.$font-title;

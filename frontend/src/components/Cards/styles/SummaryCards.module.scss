@@ -1,0 +1,49 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #E2D9C8;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+
+  .iconContainer {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    &.green { background-color: rgba(26, 77, 74, 0.1); color: #1A4D4A; }
+    &.blue { background-color: rgba(59, 130, 246, 0.1); color: #3B82F6; }
+    &.orange { background-color: rgba(245, 158, 11, 0.1); color: #F59E0B; }
+    &.purple { background-color: rgba(139, 92, 246, 0.1); color: #8B5CF6; }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: 0.875rem;
+      color: #7A7A7A;
+    }
+
+    strong {
+      font-size: 1.5rem;
+      color: #333;
+      font-weight: 700;
+    }
+  }
+}

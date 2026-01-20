@@ -1,7 +1,11 @@
 import { Request } from "express";
 
-export const cookieExtrator = (req:Request): string | null => {
-    if (req && req.cookies) return req.cookies['accessToken'] || null;
+export const cookieExtrator = (req: Request): string | null => {
+  let token: string | null = null;
 
-    return null;
+  if (req && req.cookies) {
+    token = req.cookies["token"] as string;
+  }
+
+  return token;
 };

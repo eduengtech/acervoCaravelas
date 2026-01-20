@@ -1,4 +1,4 @@
-@use './variables' as vars;
+@use "./variables" as vars;
 
 @mixin glass-effect {
   background: vars.$bg-card-glass;
@@ -9,5 +9,7 @@
 }
 
 @mixin mobile {
-  @media (max-width:767px) { @content; }
+  @media (max-width: 767px) {
+    @content;
+  }
 }

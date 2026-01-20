@@ -1,49 +1,41 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { UsersService } from 'src/modules/users/service/users.service';
-import { TokenService } from 'src/modules/token/service/token.service';
+import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { UsersService } from "src/modules/users/service/users.service";
+import { TokenService } from "src/modules/token/service/token.service";
 
 @Injectable()
 export class AuthService {
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly tokenService: TokenService,
+  ) {}
 
-    constructor (
-        private readonly usersService: UsersService, 
-        private readonly tokenService: TokenService
-    ) {};
+  async login(email: string, senha: string) {
+    const user = await this.usersService.validateUser(email, senha);
 
-    async login (email: string, senha: string) {
+    if (!user) throw new UnauthorizedException("Credenciais inválidas");
 
-        const user = await this.usersService.validateUser(email, senha);
-        
-        if(!user) throw new UnauthorizedException('Credenciais inválidas');
-        
-        return this.tokenService.generateAndSaveTokens(user);
+    return this.tokenService.generateAndSaveTokens(user);
+  }
 
-    }
+  async refresh(refreshToken: string) {
+    const payload = await this.tokenService.validateAndGetPayload(refreshToken);
 
-    async refresh(refreshToken: string){
+    if (!payload) throw new UnauthorizedException("Token inválido ou expirado");
 
-        const payload = await this.tokenService.validateAndGetPayload(refreshToken);
+    const user = await this.usersService.findById(payload.sub);
 
-        if(!payload) throw new UnauthorizedException('Token inválido ou expirado');
+    if (!user) throw new UnauthorizedException("Usuário não encontrado");
 
-        const user = await this.usersService.findById(payload.sub);
+    await this.tokenService.deleteRefreshToken(user.id);
 
-        if (!user) throw new UnauthorizedException('Usuário não encontrado');
-                
-        await this.tokenService.deleteRefreshToken(user.id);
+    return this.tokenService.generateAndSaveTokens(user);
+  }
 
-        return this.tokenService.generateAndSaveTokens(user);
+  async logout(refreshToken: string) {
+    const payload = await this.tokenService.validateAndGetPayload(refreshToken);
 
-    }
+    if (payload) await this.tokenService.deleteRefreshToken(payload.sub);
 
-    async logout(refreshToken: string){
-
-        const payload = await this.tokenService.validateAndGetPayload(refreshToken);
-
-        if (payload) await this.tokenService.deleteRefreshToken(payload.sub);
-
-        return { message: 'Logout realizado com sucesso' };
-
-    }
-
+    return { message: "Logout realizado com sucesso" };
+  }
 }

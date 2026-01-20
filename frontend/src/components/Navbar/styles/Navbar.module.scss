@@ -1,0 +1,79 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem ;
+  background-color: #ffffff51; 
+  backdrop-filter: blur(5px); 
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 80vw;
+
+  .searchContainer {
+    position: relative;
+    width: 60%;
+    max-width: 600px;
+
+    svg {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.8rem 1rem 0.8rem 3rem;
+      border-radius: 50px; // Cantos bem arredondados como no print
+      border: 1px solid #E2D9C8;
+      background-color: #FAF9F6;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+
+      &:focus {
+        border-color: #1A4D4A;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    .iconBtn {
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #555;
+
+      .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: #B25E3B; // O tom terracota do print
+        color: white;
+        font-size: 0.7rem;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #E2D9C8;
+    }
+  }
+}

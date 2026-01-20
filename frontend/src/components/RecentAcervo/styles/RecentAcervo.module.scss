@@ -1,0 +1,87 @@
+.card {
+  margin: 1.5rem 2rem;
+  padding: 1.5rem;
+
+
+  .header {
+    margin-bottom: 1.5rem;
+    h2 {
+      font-size: 1.25rem;
+      color: #5d4037; 
+      font-weight: 600;
+    }
+  }
+
+  .tableContainer {
+    border-radius: 12px;
+    background: #FCF7F3;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e9e2d8; 
+    overflow-x: auto;
+  }
+
+  .table {
+    width: 100%;
+    
+    border-collapse: collapse;
+    text-align: left;
+    thead{
+      background: #f4e8e0;
+    }
+    th {
+      padding: 1rem;
+      color: #8d6e63;
+      font-weight: 500;
+      border-bottom: 2px solid #f5f1ed;
+      font-size: 0.875rem;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid #f5f1ed;
+      color: #4e342e;
+      font-size: 0.9rem;
+    }
+
+    .titulo {
+      font-weight: 500;
+      color: #2e1f1c;
+    }
+
+    .badge {
+      background: #fdf5e6; // Bege suave
+      color: #8b4513;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      border: 1px solid #f5deb3;
+    }
+
+    .date {
+      color: #a1887f;
+      font-size: 0.8rem;
+    }
+  }
+
+  .footer {
+    margin: 1.5rem;
+    text-align: end;
+
+    button {
+      background: none;
+      border: 1px solid #d7ccc8;
+      color: #795548;
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+      
+
+      &:hover {
+        background: #efebe9;
+        border-color: #bcaaa4;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+# Indica que este é o arquivo de configuração raiz
+root = true
+
+[*]
+# Conjunto de caracteres padrão (Essencial para acervos culturais/acentuação)
+charset = utf-8
+
+# Estilo de identação: usamos espaços (padrão corporativo)
+indent_style = space
+
+# Tamanho da identação: 2 espaços (conforme seu padrão NestJS)
+indent_size = 2
+
+# Final de linha: padrão Unix (mais seguro para servidores e bancos)
+end_of_line = lf
+
+# Garante que o arquivo termine com uma linha em branco
+insert_final_newline = true
+
+# Remove espaços em branco inúteis no final das linhas
+trim_trailing_whitespace = true

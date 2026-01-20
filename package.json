@@ -1,0 +1,31 @@
+{
+  "name": "acervocaravelas",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduengtech/acervoCaravelas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduengtech/acervoCaravelas/issues"
+  },
+  "homepage": "https://github.com/eduengtech/acervoCaravelas#readme",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
+  },
+  "lint-staged": {
+    "backend/**/*.{ts,js}": [
+      "npm --prefix backend run lint",
+      "npm --prefix backend run format"
+    ]
+  }
+}

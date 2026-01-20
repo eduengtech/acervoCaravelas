@@ -20,6 +20,7 @@ model User {
   email             String      @unique
   senhaHash         String
   role              Role
+  avatarURL         String?
   
   
   itensCriados ItensAcervo[]  @relation("UsuarioCriador")

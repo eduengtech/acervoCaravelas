@@ -1,18 +1,14 @@
-
-import { AuthProvider } from './auth/AuthProvider'
-import { Login } from './pages/Login/Login'
-
+import { AuthProvider } from "./auth/AuthProvider";
+import { AppRouters } from "./Routers/AppRouters";
 
 function App() {
-
   return (
     <>
-    <AuthProvider>
-      <Login />
-    </AuthProvider>
-      
+      <AuthProvider>
+        <AppRouters />
+      </AuthProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

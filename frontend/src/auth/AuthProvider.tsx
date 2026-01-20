@@ -1,47 +1,45 @@
-import { useEffect, useState } from 'react';
-import type { AuthProviderProps, User } from './types';
-import { getMe, login, logout } from '../service/auth/auth.service';
-import { AuthContext } from './AuthContext';
-import { subscribeAuthError } from '../events/authEvents';
+import { useCallback, useEffect, useState } from "react";
+import type { AuthProviderProps, User } from "./types";
+import { getMe, login, logout } from "../service/auth/auth.service";
+import { AuthContext } from "./AuthContext";
+import { subscribeAuthError } from "../events/authEvents";
 
-export function AuthProvider({children}: AuthProviderProps) {
-    const [user, setUser] = useState<User | null> (null);
-    const [loading,setLoading] = useState(true);
-    const isAuthenticated = !!user
+export function AuthProvider({ children }: AuthProviderProps) {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const isAuthenticated = !!user;
 
-   useEffect(() => {
+  useEffect(() => {
     getMe()
       .then(setUser)
       .catch(() => setUser(null))
       .finally(() => setLoading(false));
   }, []);
 
-    useEffect(() => {
-        subscribeAuthError(() => {
-            setUser(null);
-        });
-    }, []);
+  useEffect(() => {
+    const unsubscribe = subscribeAuthError(() => {
+      setUser(null);
+    });
 
+    return () => unsubscribe?.();
+  }, []);
 
-    
-    async function signIn(email: string, senha: string) {
-        await login(email, senha);
-        const  user = await getMe();
-        setUser(user)
-    }
-    async function signOut() {
-        await logout();
-        setUser(null);
-    }
+  const signIn = useCallback(async (email: string, senha: string) => {
+    await login(email, senha);
+    const userData = await getMe();
+    setUser(userData);
+  }, []);
 
-    if (loading) return null;
+  const signOut = useCallback(async () => {
+    await logout();
+    setUser(null);
+  }, []);
 
-    return(
-        <AuthContext.Provider value={{user, isAuthenticated, signIn, signOut,}}>
-            {!loading && children}
-        </AuthContext.Provider>
-    )
+  if (loading) return null;
 
+  return (
+    <AuthContext.Provider value={{ user, isAuthenticated, signIn, signOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
-
-

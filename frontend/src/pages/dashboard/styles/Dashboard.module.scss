@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+.mainContainer {
+  flex: 1;
+  padding: 1rem;
+  background-color: #f8f5f0; 
+}
+
+.mainTitle {
+  margin: 2rem 0;
+  h1 {
+    font-family: 'Serif', serif;
+    font-size: 2rem;
+    color: #1a4d43;
+  }
+  p {
+    color: #666;
+    max-width: 600px;
+  }
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr; // Tabela maior que o gráfico
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: center;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr; // Em telas menores, um embaixo do outro
+  }
+}
+
+.chartArea {
+  border-radius: 12px;
+  padding: 1rem;
+}

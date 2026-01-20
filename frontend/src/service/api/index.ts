@@ -1,2 +1,2 @@
-import './interceptors';
-export {acervoHttp} from './axios';
+import "./interceptors";
+export { acervoHttp } from "./axios";

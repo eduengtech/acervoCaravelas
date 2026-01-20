@@ -1,0 +1,101 @@
+// Sidebar.module.scss
+.sidebar {
+  width: 340px;
+  background-color: #f4e9de;
+  height: 100vh;
+  border-right: 1px solid #E2D9C8;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../../../assets/image/mapSidebar.png");
+    background-size: cover;
+    opacity: 0.4; 
+    pointer-events: none;
+  }
+
+  .logoContainer {
+    padding: 2.5rem 1rem;
+    position: relative;
+    z-index: 10;
+    
+    img {
+      max-width: 550px;
+      height: 250px;
+    }
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    z-index: 10;
+    padding: 0 1.8rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.8rem 1rem;
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      margin-bottom: 4px;
+
+      svg {
+        width: 50px;
+        height: 20px;
+      }
+
+      &:hover {
+        background-color: rgba(26, 77, 74, 0.05);
+        color: #1A4D4A;
+      }
+
+      &.active {
+        background-color: #1A4D4A; 
+        color: white;
+      }
+    }
+  }
+
+  .footer {
+    width:340px ;
+    padding: .9rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 10;
+
+    a{
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    svg {
+      width: 50px;
+      height: 20px;
+    }
+
+    &:hover {
+        background-color: #1a4d4a0d;
+        color: #1A4D4A;
+    }
+  }
+}
